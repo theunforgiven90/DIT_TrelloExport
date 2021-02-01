@@ -74,7 +74,7 @@
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i> {% if item.completedBy %}, {% endif %}{{ item.completedDate }}{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
