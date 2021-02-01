@@ -40,11 +40,11 @@
                     <div class="card">
                         <h3><a target="_blank" href="{{ theLink }}">{{ card.title }}</a></h3>        
                         <div class="description">
-                            <p class="text">{{ card.cardDescription }}</p>
+                            <p class="text">{{ card.cardDescription|linkdoi }}</p>
                         </div>
                         {% if card.jsonAttachments|length > 0 %}
                         <div class="attachments">
-                            <span class="label"><i class="fa fa-paperclip"></i> Pieces jointes ({{ card.jsonAttachments|length }}):</span>
+                            <span class="label"><i class="fa fa-paperclip"></i> Attachments ({{ card.jsonAttachments|length }}):</span>
                             {% for attach in card.jsonAttachments %}
                             <div class="attachment">
                                 <span class="label"><i class="fa fa-paperclip"></i> <a target="_blank" href="{{ attach.url }}">{{ attach.name }}</a>{% if attach.isUpload%} {{ attach.bytes|number_format }} kb{% endif %}</span>
@@ -57,23 +57,24 @@
                         {% endif %}
                         {% if card.numberOfComments > 0 %}
                         <div class="comments">
-                            <span class="label"><i class="fa fa-comments"></i> Commentaires ({{ card.numberOfComments }}):</span>
+                            <span class="label"><i class="fa fa-comments"></i> Comments ({{ card.numberOfComments }}):</span>
                             {% for comment in card.jsonComments %}
                             <div class="comment">
                                 <span class="label"><i class="far fa-comments"></i> {{ comment.date }} - {{ comment.memberCreator.fullName }}</span>
-                                <span class="text">{{ comment.text }}</span>
+                                <span class="text">{{ comment.text|linkdoi }}</span>
                             </div>
                             {% endfor %}
                         </div>
                         {% endif %}
                         {% if card.jsonCheckLists|length > 0 %}
                         <div class="checklists">
+                            <span class="label"><i class="fa fa-list-alt"></i> Checklists ({{ card.jsonCheckLists|length }}):</span>
                             {% for clist in card.jsonCheckLists %}
                             <div class="checklist">
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i><i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i> {% if item.completedBy %}{{ item.completedBy }}, {% endif %}{{ item.completedDate }}{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
@@ -82,7 +83,7 @@
                         {% endif %}
                         {% if card.customFields|length > 0 %}
                         <div class="customFields">
-                            <span class="label"><i class="fa fa-cubes"></i> Indicateurs ({{ card.customFields|length }}):</span>
+                            <span class="label"><i class="fa fa-cubes"></i> CustomFields ({{ card.customFields|length }}):</span>
                             {% for field in card.customFields %}
                             <div class="customField">
                                 <span class="label"><i class="fa fa-cube"></i> {{ field.name }}:</span>
