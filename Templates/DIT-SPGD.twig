@@ -47,7 +47,7 @@
                             <span class="label"><i class="fa fa-paperclip"></i> Pieces jointes ({{ card.jsonAttachments|length }}):</span>
                             {% for attach in card.jsonAttachments %}
                             <div class="attachment">
-                                <span class="label"><i class="fa fa-paperclip"></i> <a target="_blank" href="{{ attach.url }}">{{ attach.name }}</a>{% if attach.isUpload%} {{ attach.bytes|number_format }} kb{% endif %}</span>
+                                <span class="label"><i class="fa fa-paperclip"></i> <a target="_blank" href="{{ attach.url }}">{{ attach.name }}</a>{% if attach.isUpload%}{% endif %}</span>
                                 {% if attach.previews|length > 0 %}
                                 <p><img class="img-fluid" src="{{ attach.previews|last.url }}" /></p>
                                 {% endif %}
@@ -73,7 +73,7 @@
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i> , {% else %}<i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
@@ -81,7 +81,7 @@
                         </div>
                         {% endif %}
                         {% if card.customFields|length > 0 %}
-                        <div class="customFields99">
+                        <div class="customFields">
                             <span class="label"><i class="fa fa-cubes"></i> Indicateurs ({{ card.customFields|length }}):</span>
                             {% for field in card.customFields %}
                             <div class="customField">
