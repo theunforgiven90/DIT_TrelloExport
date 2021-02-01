@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html language="{{ data.renderSettings.language }}">
 <head>
-<title>TrelloExport Bibliography</title>
+<title>TrelloExport DIT-SPGD</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -74,7 +74,7 @@
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i> {% if item.completedBy %}{{ item.completedBy }}, {% endif %}{{ item.completedDate }}{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i> {% if item.completedBy %}, {% endif %}{{ item.completedDate }}{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
