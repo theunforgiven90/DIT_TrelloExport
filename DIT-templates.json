@@ -1,0 +1,9 @@
+{
+    "templates": [{
+            "name": "DIT-SPGD",
+            "url": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/DIT-SPGD.twig",
+            "description": "DIT-SPGD",
+            "css": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/DIT-SPGD.css"
+        }
+    ]
+}
