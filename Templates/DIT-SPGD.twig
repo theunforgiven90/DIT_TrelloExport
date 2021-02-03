@@ -9,7 +9,9 @@
 <link type="text/css" rel="stylesheet" href="{{ data.renderSettings.CSS }}">
 </head>
 <body>
-<img src="https://theunforgiven90.github.io/DIT_TrelloExport/Templates/LOGORCGE_noir72dpi_FRU.jpg" alt="LOGO-GE" /><p><strong>Direction de l'Information du Territoire</strong></p>
+<p>
+  <img src="https://theunforgiven90.github.io/DIT_TrelloExport/Templates/LOGORCGE_noir72dpi_FRU.jpg" alt="LOGO-GE" /><a href=""><strong>Direction de l'Information du Territoire</strong></a>
+</p>
 <div class="container">
         {% set organizationName = 'Direction de l Information du Territoire' %}
         {% set boardName = '' %}
@@ -74,7 +76,7 @@
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<pre><i class="far fa-check-square"></i></pre>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
