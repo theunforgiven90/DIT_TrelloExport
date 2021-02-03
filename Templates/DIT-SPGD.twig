@@ -9,6 +9,7 @@
 <link type="text/css" rel="stylesheet" href="{{ data.renderSettings.CSS }}">
 </head>
 <body>
+<p><img class="img-fluid" src="https://trello-attachments.s3.amazonaws.com/5fad13ad113caa8eaa441e93/5fb62f08a84e707b54db0196/9bf72a80906e2f068956ddb45ede2a3b/DENS_parPLAN_PL_V6_not21_NT2_FILTRE.png" /></p>
 <img src="https://raw.githubusercontent.com/theunforgiven90/DIT_TrelloExport/main/Templates/LOGORCGE_noir72dpi_FRU.jpg" alt="LOGO-GE" />
 <div class="container">
         {% set organizationName = 'Direction de l Information du Territoire' %}
@@ -18,8 +19,7 @@
             {% set theLink = '' %}
             {% if card.boardName != boardName %}
                 <h1>{{ card.boardName }}</h1>
-                <img src="https://raw.githubusercontent.com/theunforgiven90/DIT_TrelloExport/main/Templates/LOGORCGE_noir72dpi_FRU.jpg" alt="LOGO-GE" />
-            {% endif %}
+                        {% endif %}
             {% set boardName = card.boardName %}
             {% set organizationName = card.organizationName %}
             {% set curList = card.listName %}
