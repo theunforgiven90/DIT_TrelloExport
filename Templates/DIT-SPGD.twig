@@ -18,6 +18,7 @@
             {% set theLink = '' %}
             {% if card.boardName != boardName %}
                 <h1>{{ card.boardName }}</h1>
+                <img src="https://raw.githubusercontent.com/theunforgiven90/DIT_TrelloExport/main/Templates/LOGORCGE_noir72dpi_FRU.jpg" alt="LOGO-GE" />
             {% endif %}
             {% set boardName = card.boardName %}
             {% set organizationName = card.organizationName %}
@@ -74,7 +75,7 @@
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<pre><i class="far fa-check-square"></i></pre>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<pre>         <i class="far fa-check-square"></i></pre>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
