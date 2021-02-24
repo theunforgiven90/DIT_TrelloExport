@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html language="{{ data.renderSettings.language }}">
 <head>
-<title>TrelloExport DIT-SPGD</title>
+<title>TrelloExport Bibliography</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -9,18 +9,15 @@
 <link type="text/css" rel="stylesheet" href="{{ data.renderSettings.CSS }}">
 </head>
 <body>
-<p>
-  <img src="https://theunforgiven90.github.io/DIT_TrelloExport/Templates/LOGORCGE_noir72dpi_FRU.jpg" alt="LOGO-GE" /><a ><strong>  Direction de l'Information du Territoire</strong></a>
-</p>
 <div class="container">
-        {% set organizationName = 'Direction de l Information du Territoire' %}
+        {% set organizationName = '' %}
         {% set boardName = '' %}
         {% set prevList = '' %}
         {% for card in data.cards %}
             {% set theLink = '' %}
             {% if card.boardName != boardName %}
                 <h1>{{ card.boardName }}</h1>
-                        {% endif %}
+            {% endif %}
             {% set boardName = card.boardName %}
             {% set organizationName = card.organizationName %}
             {% set curList = card.listName %}
@@ -41,16 +38,16 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <h3><a target="_blank">{{ card.title }}</a></h3>        
+                        <h3><a target="_blank" href="{{ theLink }}">{{ card.title }}</a></h3>        
                         <div class="description">
                             <p class="text">{{ card.cardDescription|linkdoi }}</p>
                         </div>
                         {% if card.jsonAttachments|length > 0 %}
                         <div class="attachments">
-                            <span class="label"><i class="fa fa-paperclip"></i> Pieces jointes ({{ card.jsonAttachments|length }}):</span>
+                            <span class="label"><i class="fa fa-paperclip"></i> Attachments ({{ card.jsonAttachments|length }}):</span>
                             {% for attach in card.jsonAttachments %}
                             <div class="attachment">
-                                <span class="label"><i class="fa fa-paperclip"></i> <a target="_blank" href="{{ attach.url }}">{{ attach.name }}</a>{% if attach.isUpload%}{% endif %}</span>
+                                <span class="label"><i class="fa fa-paperclip"></i> <a target="_blank" href="{{ attach.url }}">{{ attach.name }}</a>{% if attach.isUpload%} {{ attach.bytes|number_format }} kb{% endif %}</span>
                                 {% if attach.previews|length > 0 %}
                                 <p><img class="img-fluid" src="{{ attach.previews|last.url }}" /></p>
                                 {% endif %}
@@ -60,7 +57,7 @@
                         {% endif %}
                         {% if card.numberOfComments > 0 %}
                         <div class="comments">
-                            <span class="label"><i class="fa fa-comments"></i> Commentaires ({{ card.numberOfComments }}):</span>
+                            <span class="label"><i class="fa fa-comments"></i> Comments ({{ card.numberOfComments }}):</span>
                             {% for comment in card.jsonComments %}
                             <div class="comment">
                                 <span class="label"><i class="far fa-comments"></i> {{ comment.date }} - {{ comment.memberCreator.fullName }}</span>
@@ -71,12 +68,13 @@
                         {% endif %}
                         {% if card.jsonCheckLists|length > 0 %}
                         <div class="checklists">
+                            <span class="label"><i class="fa fa-list-alt"></i> Checklists ({{ card.jsonCheckLists|length }}):</span>
                             {% for clist in card.jsonCheckLists %}
                             <div class="checklist">
                                 <span class="label"><i class="fa fa-list"></i> {{ clist.name }} ({{ clist.items|length }} items)</span>
                                 <ul>
                                 {% for item in clist.items %}
-                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i>{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
+                                <li>{{ item.name }} <span class="completed">{% if item.completed%}<i class="far fa-check-square"></i> {% if item.completedBy %}{{ item.completedBy }}, {% endif %}{{ item.completedDate }}{% else %}<i class="far fa-square"></i>{% endif %}</span></li>
                                 {% endfor %}
                                 </ul>
                             </div>
@@ -85,7 +83,7 @@
                         {% endif %}
                         {% if card.customFields|length > 0 %}
                         <div class="customFields">
-                            <span class="label"><i class="fa fa-cubes"></i> Indicateurs ({{ card.customFields|length }}):</span>
+                            <span class="label"><i class="fa fa-cubes"></i> CustomFields ({{ card.customFields|length }}):</span>
                             {% for field in card.customFields %}
                             <div class="customField">
                                 <span class="label"><i class="fa fa-cube"></i> {{ field.name }}:</span>
