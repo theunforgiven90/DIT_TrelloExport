@@ -4,6 +4,18 @@
             "url": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/DIT-SPGD.twig",
             "description": "DIT-SPGD",
             "css": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/DIT-SPGD.css"
+        },
+		{
+            "name": "bibliography",
+            "url": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/bibliography.twig",
+            "description": "Bibliography HTML",
+            "css": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/bibliography.css"
+        },
+        {
+            "name": "newsletter",
+            "url": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/newsletter.twig",
+            "description": "Newsletter with buttons HTML",
+            "css": "https://theunforgiven90.github.io/DIT_TrelloExport/Templates/newsletter.css"
         }
     ]
 }
